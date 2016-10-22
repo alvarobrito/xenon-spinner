@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>xenon-spinner demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+
+    <link rel="import" href="../xenon-spinner.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      xenon-spinner {
+        --xenon-spinner-size: 2;
+        --xenon-spinner-animation-duration: 1800ms;
+        --xenon-spinner-animation-function: ease;
+        --xenon-spinner: {
+          -webkit-border-radius: 0.5em;
+          -moz-border-radius: 0.5em;
+          -ms-border-radius: 0.5em;
+          -o-border-radius: 0.5em;
+          border-radius: 0.5em;
+          -webkit-box-shadow: whitesmoke 1.5em 0 0 0, whitesmoke 1.1em 1.1em 0 0, whitesmoke 0 1.5em 0 0, whitesmoke -1.1em 1.1em 0 0, whitesmoke -1.5em 0 0 0, whitesmoke -1.1em -1.1em 0 0, whitesmoke 0 -1.5em 0 0, whitesmoke 1.1em -1.1em 0 0;
+          -moz-box-shadow: whitesmoke 1.5em 0 0 0, whitesmoke 1.1em 1.1em 0 0, whitesmoke 0 1.5em 0 0, whitesmoke -1.1em 1.1em 0 0, whitesmoke -1.5em 0 0 0, whitesmoke -1.1em -1.1em 0 0, whitesmoke 0 -1.5em 0 0, whitesmoke 1.1em -1.1em 0 0;
+          box-shadow: whitesmoke 1.5em 0 0 0, whitesmoke 1.1em 1.1em 0 0, whitesmoke 0 1.5em 0 0, whitesmoke -1.1em 1.1em 0 0, whitesmoke -1.5em 0 0 0, whitesmoke -1.1em -1.1em 0 0, whitesmoke 0 -1.5em 0 0, whitesmoke 1.1em -1.1em 0 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="vertical-section-container centered">
+      <h3>Basic xenon-spinner Demo</h3>
+      <demo-snippet>
+        <button data-open="xenon-spinner">Show xenon-spinner</button>
+        <button data-close="xenon-spinner">Close xenon-spinner</button>
+        <template>
+          <xenon-spinner with-backdrop></xenon-spinner>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <script>
+      (function() {
+        document.querySelector('[data-open=xenon-spinner]').addEventListener('click', function() {
+          document.querySelector('xenon-spinner').open();
+        });
+
+        document.querySelector('[data-close=xenon-spinner]').addEventListener('click', function() {
+          document.querySelector('xenon-spinner').close();
+        });
+      })();
+    </script>
+
+  </body>
+</html>

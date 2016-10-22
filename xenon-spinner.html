@@ -1,0 +1,164 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-overlay-behavior/iron-overlay-behavior.html">
+
+<!--
+`xenon-spinner`
+A spinner polymer component
+
+@polymerBehavior IronOverlayBehavior
+@demo demo/index.html
+-->
+
+<dom-module id="xenon-spinner">
+  <template>
+    <style>
+
+      @-webkit-keyframes spinner {
+
+          0% {
+              -webkit-transform: rotate(0deg);
+              -moz-transform: rotate(0deg);
+              -ms-transform: rotate(0deg);
+              -o-transform: rotate(0deg);
+              transform: rotate(0deg);
+          }
+
+          100% {
+              -webkit-transform: rotate(360deg);
+              -moz-transform: rotate(360deg);
+              -ms-transform: rotate(360deg);
+              -o-transform: rotate(360deg);
+              transform: rotate(360deg);
+          }
+
+      }
+
+      @-moz-keyframes spinner {
+
+          0% {
+              -webkit-transform: rotate(0deg);
+              -moz-transform: rotate(0deg);
+              -ms-transform: rotate(0deg);
+              -o-transform: rotate(0deg);
+              transform: rotate(0deg);
+          }
+
+          100% {
+              -webkit-transform: rotate(360deg);
+              -moz-transform: rotate(360deg);
+              -ms-transform: rotate(360deg);
+              -o-transform: rotate(360deg);
+              transform: rotate(360deg);
+          }
+
+      }
+
+      @-o-keyframes spinner {
+
+          0% {
+              -webkit-transform: rotate(0deg);
+              -moz-transform: rotate(0deg);
+              -ms-transform: rotate(0deg);
+              -o-transform: rotate(0deg);
+              transform: rotate(0deg);
+          }
+
+          100% {
+              -webkit-transform: rotate(360deg);
+              -moz-transform: rotate(360deg);
+              -ms-transform: rotate(360deg);
+              -o-transform: rotate(360deg);
+              transform: rotate(360deg);
+          }
+
+      }
+
+      @keyframes spinner {
+
+          0% {
+              -webkit-transform: rotate(0deg);
+              -moz-transform: rotate(0deg);
+              -ms-transform: rotate(0deg);
+              -o-transform: rotate(0deg);
+              transform: rotate(0deg);
+          }
+
+          100% {
+              -webkit-transform: rotate(360deg);
+              -moz-transform: rotate(360deg);
+              -ms-transform: rotate(360deg);
+              -o-transform: rotate(360deg);
+              transform: rotate(360deg);
+          }
+
+      }
+
+      :host {
+          -webkit-animation: spinner var(--xenon-spinner-animation-duration, 1500ms) infinite var(--xenon-spinner-animation-function, linear);
+          -moz-animation: spinner var(--xenon-spinner-animation-duration, 1500ms) infinite var(--xenon-spinner-animation-function, linear);
+          -ms-animation: spinner var(--xenon-spinner-animation-duration, 1500ms) infinite var(--xenon-spinner-animation-function, linear);
+          -o-animation: spinner var(--xenon-spinner-animation-duration, 1500ms) infinite var(--xenon-spinner-animation-function, linear);
+          animation: spinner var(--xenon-spinner-animation-duration, 1500ms) infinite var(--xenon-spinner-animation-function, linear);
+          font-size: var(--xenon-spinner-size, 1)rem;
+          display: block;
+          width: 1em;
+          height: 1em;
+          overflow: hidden;
+          text-indent: 100%;
+          @apply(--xenon-spinner);
+      }
+
+    </style>
+
+    <div class="spinner">
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'xenon-spinner',
+
+      properties: {
+
+        /**
+         * Set to true to disable canceling the overlay with the ESC key.
+         */
+        noCancelOnEscKey: {
+          type: Boolean,
+          value: true
+        },
+
+        /**
+         * Set to true to disable canceling the overlay by clicking outside it.
+         */
+        noCancelOnOutsideClick: {
+          type: Boolean,
+          value: true
+        },
+
+        /**
+         * The element to fit `this` into. Also you can set a DOM selector (optional), eg. '#container'.
+         */
+        fitInto: {
+          type: Object,
+          value: window,
+          observer: '_fitIntoChanged'
+        }
+
+      },
+
+      behaviors: [
+        Polymer.IronOverlayBehavior
+      ],
+
+      _fitIntoChanged: function() {
+        var element = this.get('fitInto');
+
+        this.set('fitInto', typeof element === 'string' ? document.querySelector(element) : element);
+      }
+
+    });
+  </script>
+</dom-module>
